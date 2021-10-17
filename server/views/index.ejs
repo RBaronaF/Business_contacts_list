@@ -1,5 +1,5 @@
 <!--
-File name : views/index.ejs
+File name : server/views/index.ejs
 Student’s Name : Ricardo Barona
 StudentID : 301165198
 Date : 2021-09-29
@@ -12,23 +12,23 @@ Date : 2021-09-29
   <!-- Main Content -->
   <main>
       <% if(title=='Home') { %>
-        <%- include partials/Home.ejs %>
+        <%- include home/Home.ejs %>
       <%  } %>
 
       <% if(title=='About') { %>
-        <%- include partials/About.ejs %>
+        <%- include home/About.ejs %>
       <%  } %>
 
       <% if(title=='Projects') { %>
-        <%- include partials/Projects.ejs %>
+        <%- include home/Projects.ejs %>
       <%  } %>
 
       <% if(title=='Services') { %>
-        <%- include partials/Services.ejs %>
+        <%- include home/Services.ejs %>
       <%  } %>
 
       <% if(title=='Contact') { %>
-        <%- include partials/Contact.ejs %>
+        <%- include home/Contact.ejs %>
       <%  } %>
   </main>
 
