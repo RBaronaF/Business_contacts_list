@@ -1,0 +1,38 @@
+<!--
+File name : views/index.ejs
+Student’s Name : Ricardo Barona
+StudentID : 301165198
+Date : 2021-09-29
+-->
+
+<%- include partials/header.ejs %>
+
+<%- include partials/main_nav.ejs %>
+  
+  <!-- Main Content -->
+  <main>
+      <% if(title=='Home') { %>
+        <%- include partials/Home.ejs %>
+      <%  } %>
+
+      <% if(title=='About') { %>
+        <%- include partials/About.ejs %>
+      <%  } %>
+
+      <% if(title=='Projects') { %>
+        <%- include partials/Projects.ejs %>
+      <%  } %>
+
+      <% if(title=='Services') { %>
+        <%- include partials/Services.ejs %>
+      <%  } %>
+
+      <% if(title=='Contact') { %>
+        <%- include partials/Contact.ejs %>
+      <%  } %>
+  </main>
+
+
+<%- include partials/bottom_nav.ejs %>  
+
+<%- include partials/footer.ejs %>
