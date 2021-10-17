@@ -2,7 +2,7 @@
 File name : app.js
 Student’s Name : Ricardo Barona
 StudentID : 301165198
-Date : 2021-09/29
+Date : 2021-10-17
 */
 
 // installed 3rd party packages
@@ -12,6 +12,22 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+
+// database setup
+let mongoose = require('mongoose');
+let DB = require('./db');
+
+// point mongoose to the DB URI
+mongoose.connect(DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
+mongoDB.once('open', ()=>{
+  console.log('Connected to MongoDB...');
+});
+
+
+// Routes import
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 

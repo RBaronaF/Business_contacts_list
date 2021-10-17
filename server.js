@@ -4,10 +4,15 @@
 File name : server.js
 Student’s Name : Ricardo Barona
 StudentID : 301165198
-Date : 2021-09/29
+Date : 2021-10-17
 */
 
-var app = require('./app');
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('./server/config/app');
 var debug = require('debug')('week-4:server');
 var http = require('http');
 
@@ -15,7 +20,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '4000');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
