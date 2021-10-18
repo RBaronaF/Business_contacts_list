@@ -1,8 +1,8 @@
 /*
-File name : Content/app.css
+File name : public/Content/app.css
 Student’s Name : Ricardo Barona
 StudentID : 301165198
-Date : 2021-09-29
+Date : 2021-10-18
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -56,6 +56,32 @@ body, html {
 
 .Title {padding-top:20px; font-weight: 500; font-size: 3em;}
 .Content {padding: 20px 0px; font-weight: 300; font-size: 1em;}
+
+
+/* LOGIN PAGE */
+.valign-mid {
+     height : 100vh;
+     display : flex;
+     align-items : center;
+ }
+ 
+.wp-100 {
+     width : 100%;
+ }
+ 
+.card {
+     background: #222638;
+     border-width: 0;
+     border-radius: 4px;
+     box-shadow: 0 3px 9px rgba(70 70 70 / 40%);
+     margin-bottom: 1.5rem
+ }
+ 
+.card-header {
+     background-color: transparent;
+     border-color: rgba(160, 175, 185, .15);
+     background-clip: padding-box
+ }
 
 
 /* ABOUT PAGE  */
@@ -284,19 +310,6 @@ footer .quick-links {
      font-size: 30px;
      font-weight: 300;
      font-family: 'Poppins', sans-serif;
-}
-
-.form-group .form-control {
-     border-bottom: 1px;
-     border-style: none none solid none;
-     border-radius: 4px; 
-     border-color: #ffffff;
-}
-
-.form-group .form-control:focus {
-     box-shadow: none;
-     border-width: 0 0 2px 0;
-     border-color: #000;
 }
 
 textarea {

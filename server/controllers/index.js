@@ -27,3 +27,7 @@ module.exports.displayServicesPage = (req, res, next) => {
 module.exports.displayContactPage = (req, res, next) => {
     res.render('index', { title: 'Contact'});
 }
+
+module.exports.displayLoginPage = (req, res, next) => {
+    res.render('login/login', { title: 'Login' });
+}

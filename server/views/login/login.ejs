@@ -1,0 +1,50 @@
+<!--
+File name : server/views/login/login.ejs
+Student’s Name : Ricardo Barona
+StudentID : 301165198
+Date : 2021-10-18
+-->
+
+<%- include ../partials/header.ejs %>
+
+
+  <!-- Login Content -->
+    <main class="container valign-mid">
+        <div class="row wp-100">
+            <div class="col-md-6 offset-md-3">
+                <% if (messages.error) { %>
+                    <div class="alert alert-danger">
+                        <%- messages.error %>
+                    </div>
+                <% } %>
+                
+                <% if (messages.success) { %>
+                    <div class="alert alert-success">
+                        <%- messages.success %>
+                    </div>
+                <% } %>
+                
+                <div class="card">
+                    <div class="card-header"><strong>Login to your account</strong></div>
+                    <div class="card-body">
+                        <form action="/authentication" method="post" name="form1">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username" value="">
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" value="">
+                            </div>
+                            
+                            <input type="submit" class="btn btn-success" value="Login">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+<%- include ../partials/footer.ejs %>
