@@ -1,8 +1,8 @@
 /*
-File name : Scripts/app.js
+File name : public/Scripts/app.js
 Student’s Name : Ricardo Barona
 StudentID : 301165198
-Date : 2021-09-29
+Date : 2021-10-18
 */
 
 // IIFE -- Immediately Invoked Function Expression

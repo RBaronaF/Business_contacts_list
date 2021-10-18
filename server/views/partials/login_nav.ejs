@@ -1,0 +1,69 @@
+<!--
+File name : server/views/partials/main_nav.ejs
+Student’s Name : Ricardo Barona
+StudentID : 301165198
+Date : 2021-10-18
+-->
+
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark p-5 ml-3 mr-3">
+    <img src="./Assets/images/LOGO.png" width="40" height="40" alt="" />
+    <a class="navbar-brand ml-2" href="/">Ricardo Barona</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+            <% if (title == "Home"){ %>
+            <li class="nav-item active">
+            <% } else    { %>
+            <li class="nav-item">
+            <% } %>
+                <a class="nav-link" href="/home"> Home </a>
+            </li>
+
+            <% if (title == "About") { %>
+            <li class="nav-item active">
+            <% } else    { %>
+            <li class="nav-item">
+            <% } %>
+                <a class="nav-link" href="/about"> About </a>
+            </li>
+
+            <% if (title == "Projects") { %>
+            <li class="nav-item active">
+            <% } else    { %>
+            <li class="nav-item">
+            <% } %>
+                <a class="nav-link" href="/projects"> Projects </a>
+            </li>
+
+            <% if (title == "Services") { %>
+            <li class="nav-item active">
+            <% } else    { %>
+            <li class="nav-item">
+            <% } %>
+                <a class="nav-link" href="/services"> Services </a>
+            </li>
+
+            <% if (title == "Contact") { %>
+            <li class="nav-item active">
+            <% } else    { %>
+            <li class="nav-item">
+            <% } %>
+                <a class="nav-link" href="/contact"> Contact </a>
+            </li>
+
+            <% if (title == "Contacts List") { %>
+            <li class="nav-item active">
+            <% } else    { %>
+            <li class="nav-item">
+            <% } %>
+                <a class="nav-link" href="/contacts-list"> Contacts List </a>
+            </li>
+
+            <a class="nav-link" href="/logout">Logout</a>
+    </div>
+</nav>

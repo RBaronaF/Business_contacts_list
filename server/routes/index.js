@@ -31,4 +31,10 @@ router.get('/contact', indexController.displayContactPage);
 /* Get Login Page */
 router.get('/login', indexController.displayLoginPage);
 
+/* Authentication */
+router.post('/authentication', indexController.loginAuthentication);
+
+/* Logout */
+router.get('/logout', indexController.logoutProcess); 
+
 module.exports = router;
