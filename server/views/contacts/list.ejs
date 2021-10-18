@@ -1,0 +1,45 @@
+<!--
+File name : server/views/contacts/list.ejs
+Student’s Name : Ricardo Barona
+StudentID : 301165198
+Date : 2021-10-19
+-->
+
+<div class="container">
+    <div class="table-responsive-lg">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-success">
+                <tr>
+                    <th style = "width: 5%;">No</th>
+                    <th style = "width: 25%;">Contact Name</th>
+                    <th style = "width: 25%;">Contact Number</th>
+                    <th style = "width: 25%;">Contact Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(ContactsList.length) {
+                    for(var i = 0; i < ContactsList.length; i++) { %>
+                <tr> 
+                    <td><%=i+1%></td>
+                    <td><%=ContactsList[i].contact_name%></td> 
+                    <td><%=ContactsList[i].contact_number%></td> 
+                    <td><%=ContactsList[i].contact_email%></td> 
+                    <td>
+                        <div class="action-buttons">
+                            <button type="button" class="btn btn-floating btn-success" onclick="location.href='/dashboard/edit/<%=ContactsList[i].id%>'">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-floating btn-danger" onclick="location.href='/dashboard/delete/<%=ContactsList[i].id%>'">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div> 
+                    </td>  
+                </tr>
+                <% }  }else{ %>
+                    <tr>  <td colspan="5">No record found</td>  </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>

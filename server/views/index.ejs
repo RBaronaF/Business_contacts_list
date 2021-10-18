@@ -14,28 +14,28 @@ Date : 2021-10-18
 <% } %>
 
   
-  <!-- Main Content -->
-  <main>
-      <% if(title=='Home') { %>
-          <%- include home/Home.ejs %>
-      <%  } %>
+<!-- Main Content -->
+<main>
+    <% if(title=='Home') { %>
+        <%- include home/Home.ejs %>
+    <%  } %>
 
-      <% if(title=='About') { %>
-          <%- include home/About.ejs %>
-      <%  } %>
+    <% if(title=='About') { %>
+        <%- include home/About.ejs %>
+    <%  } %>
 
-      <% if(title=='Projects') { %>
-          <%- include home/Projects.ejs %>
-      <%  } %>
+    <% if(title=='Projects') { %>
+        <%- include home/Projects.ejs %>
+    <%  } %>
 
-      <% if(title=='Services') { %>
-          <%- include home/Services.ejs %>
-      <%  } %>
+    <% if(title=='Services') { %>
+        <%- include home/Services.ejs %>
+    <%  } %>
 
-      <% if(title=='Contact') { %>
-          <%- include home/Contact.ejs %>
-      <%  } %>
-  </main>
+    <% if(title=='Contact') { %>
+        <%- include home/Contact.ejs %>
+    <%  } %>
+</main>
 
 
 <%- include partials/bottom_nav.ejs %>  

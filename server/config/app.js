@@ -34,6 +34,7 @@ mongoDB.once('open', ()=>{
 // Routes import
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
+let contactsRouter = require('../routes/contacts')
 
 let app = express();
 
@@ -60,6 +61,7 @@ app.use(expressValidator());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/contacts-list', contactsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
