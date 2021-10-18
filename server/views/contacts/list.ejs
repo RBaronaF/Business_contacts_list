@@ -19,7 +19,7 @@ Date : 2021-10-19
             </thead>
             <tbody>
                 <% if(ContactsList.length) {
-                    for(var i = 0; i < ContactsList.length; i++) { %>
+                    for(let i = 0; i < ContactsList.length; i++) { %>
                 <tr> 
                     <td><%= i+1 %></td>
                     <td><%= ContactsList[i].contact_name %></td> 
