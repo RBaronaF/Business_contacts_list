@@ -16,6 +16,15 @@ router.get('/', requiredAuth, contactsController.displayContactsListPage);
 /* GET Contacts View page. */
 router.get('/view', requiredAuth, contactsController.displayContactsListPage);
 
+/* GET Contact Edit page. */
+router.get('/edit/:id', requiredAuth, contactsController.displayContactEditPage);
+
+/* Post Contact Edit page. */
+router.post('/edit/:id', requiredAuth, contactsController.processContactEdit);
+
+/* Post Contact delete. */
+router.get('/delete/:id', requiredAuth, contactsController.performDelete);
+
 
 /* Authentication */
 function requiredAuth(req, res, next) {

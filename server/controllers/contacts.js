@@ -16,7 +16,56 @@ module.exports.displayContactsListPage = (req, res, next) => {
             return console.error(err);
         }
         else {
-            res.render('contacts/view', {title: 'Contacts List', ContactsList: contactList});      
+            res.render('contacts/view', {title: 'Contacts List', ContactsList: contactList });      
+        }
+    });
+}
+
+module.exports.displayContactEditPage = (req, res, next) => {
+    let id = req.params.id;
+
+    Contacts.findById(id, (err, contactToEdit) => {
+        if(err) {
+            console.log(err);
+            res.end(err);
+        }
+        else {
+            res.render('contacts/view', {title: 'Edit Contact', Contact: contactToEdit })
+        }
+    });
+}
+
+module.exports.processContactEdit = (req, res, next) => {
+    let id = req.params.id
+
+    let updateContact = Contacts({
+        "_id": id,
+        "contact_name": req.body.name,
+        "contact_number": req.body.contact_number,
+        "email": req.body.email
+    });
+
+    Contacts.updateOne({_id: id}, updateContact, (err) => {
+        if(err) {
+            console.log(err);
+            res.end(err);
+        }
+        else {
+            res.redirect('/contacts-list');
+        }
+    });
+}
+
+module.exports.performDelete = (req, res, next) => {
+    let id = req.params.id;
+
+    Contacts.remove({_id: id}, (err) => {
+        if(err) {
+            console.log(err);
+            res.end(err);
+        }
+        else {
+             res.redirect('/contacts-list');
         }
     });
 }

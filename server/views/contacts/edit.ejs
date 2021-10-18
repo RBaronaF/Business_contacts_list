@@ -5,3 +5,28 @@ StudentID : 301165198
 Date : 2021-10-19
 -->
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form id="contact-edit" name="contact-edit" class="form" action="/contacts-list/edit/<%= Contact._id %>" method="POST" role="form">
+                <div class="form-group">
+                    <label class="form-label" id="nameLabel" for="name">Contact Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<%= Contact.contact_name %>" tabindex="1">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="numberLabel" for="contact_number">Contact Number</label>
+                    <input type="text" class="form-control" id="contact_number" name="contact_number" value="<%= Contact.contact_number %>" tabindex="2">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="emailLabel" for="email">Contact Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<%= Contact.contact_email %>" tabindex="2">
+                </div>
+        
+                <div class="mt-3">
+                    <input type="submit" class="btn btn-success">
+                    <button type="button" class="btn btn-danger" onclick="location.href='/contacts-list/view'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
