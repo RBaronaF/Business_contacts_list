@@ -1,0 +1,60 @@
+<!--
+File name : server/views/login/login.ejs
+Student’s Name : Ricardo Barona
+StudentID : 301165198
+Date : 2021-10-18
+-->
+
+<%- include ../partials/header.ejs %>
+
+
+<!-- Register Content -->
+<main class="container valign-mid">
+    <div class="row wp-100">
+        <div class="col-md-6 offset-md-3">
+            <!-- Message Area -->
+            <% if(messages.length > 0) {%>
+                <div class="alert alert-danger">
+                    <%= messages %>
+                </div>
+            <% } %>
+            
+            <div class="card">
+                <div class="card-header"><strong>Register your account</strong></div>
+                <div class="card-body">
+                    <form method="POST" autocomplete="off">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username" required autofocus>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email: </label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter Email Address" id="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="displayName">Display Name: </label>
+                            <input type="text" class="form-control" name="displayName" placeholder="Enter Display Name" id="displayName" required>
+                        </div>
+        
+                        <div class="form-group text-right">
+                            <input type="submit" class="btn btn-success" value="Register">
+                            <a href="/">
+                                <input type="button" class="btn btn-warning" value="Cancel">
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<%- include ../partials/footer.ejs %>

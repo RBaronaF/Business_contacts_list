@@ -56,6 +56,23 @@ Date : 2021-10-18
                 <a class="nav-link" href="/contact"> Contact </a>
             </li>
 
-            <a class="nav-link" href="/login">Login</a>
+            <% if (title == "Contacts List") { %>
+            <li class="nav-item active">
+            <% } else    { %>
+            <li class="nav-item">
+            <% } %>
+                <a class="nav-link" href="/contacts-list"> Contacts List </a>
+            </li>
+            
+            <% if(typeof displayName == 'string' && displayName) { %>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link"> Logout </a>
+                </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a href="/login" class="nav-link"> Login </a>
+                </li>
+            <% } %>
+        </ul>
     </div>
 </nav>

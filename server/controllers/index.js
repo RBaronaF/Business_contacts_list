@@ -7,55 +7,131 @@ Date : 2021-10-18
 
 let express = require('express');
 let router = express.Router();
+let mongoose = require('mongoose');
+let passport = require('passport');
 
-let User = require('../models/user');
+// enable jwt
+let jwt = require('jsonwebtoken');
+let DB = require('../config/db');
+
+// create the User Model instance
+let userModel = require('../models/user');
+let User = userModel.User;
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {title: 'Home', reqs: req} );
+    res.render('index', {title: 'Home', displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayAboutPage = (req, res, next) => {
-    res.render('index', { title: 'About', reqs: req });
+    res.render('index', { title: 'About', displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayProjectsPage = (req, res, next) => {
-    res.render('index', { title: 'Projects', reqs: req });
+    res.render('index', { title: 'Projects', displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayServicesPage = (req, res, next) => {
-    res.render('index', { title: 'Services', reqs: req });
+    res.render('index', { title: 'Services', displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayContactPage = (req, res, next) => {
-    res.render('index', { title: 'Contact', reqs: req });
+    res.render('index', { title: 'Contact', displayName: req.user ? req.user.displayName : '' });
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
-    res.render('login/login', { title: 'Login' });
+    // check if the user is already logged in
+    if(!req.user) {
+        res.render('auth/login', {
+           title: "Login",
+           messages: req.flash('loginMessage'),
+           displayName: req.user ? req.user.displayName : '' 
+        })
+    }
+    else {
+        return res.redirect('/');
+    }
 }
 
-module.exports.loginAuthentication = (req, res, next) => {
-    let uname = req.body.username;
-    let pwd = req.body.password;
-
-    User.findOne({username: uname, password: pwd}, (err, oneUser) => {
+module.exports.processLoginPage = (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        // server err?
         if(err) {
-            console.log(err);
-            res.end(err);
+            return next(err);
         }
-        else if(!oneUser) {
-            req.flash('error', 'Please insert Username and Password, correctly!')
-            res.redirect('/login')
-        } else {
-            req.session.loggedin = true;
-            res.redirect('/home');
+        // is there a user login error?
+        if(!user) {
+            req.flash('loginMessage', 'Authentication Error');
+            return res.redirect('/login');
+        }
+        req.login(user, (err) => {
+            // server error?
+            if(err) {
+                return next(err);
+            }
+
+            const payload = {
+                id: user._id,
+                displayName: user.displayName,
+                username: user.username,
+                email: user.email
+            }
+
+            const authToken = jwt.sign(payload, DB.Secret, {
+                expiresIn: 604800 // 1 week
+            });
+
+            return res.redirect('/contacts-list');
+        });
+    })(req, res, next);
+}
+
+module.exports.displayRegisterPage = (req, res, next) => {
+    // check if the user is not already logged in
+    if(!req.user) {
+        res.render('auth/register', {
+            title: 'Register',
+            messages: req.flash('registerMessage'),
+            displayName: req.user ? req.user.displayName : ''
+        });
+    }
+    else {
+        return res.redirect('/');
+    }
+}
+
+module.exports.processRegisterPage = (req, res, next) => {
+    // instantiate a user object
+    let newUser = new User({
+        username: req.body.username,
+        email: req.body.email,
+        displayName: req.body.displayName
+    });
+
+    User.register(newUser, req.body.password, (err) => {
+        if(err) {
+            console.log("Error: Inserting New User");
+            if(err.name == "UserExistsError") {
+                req.flash(
+                    'registerMessage',
+                    'Registration Error: User Already Exists!'
+                );
+                console.log('Error: User Already Exists!')
+            }
+            return res.render('auth/register', {
+                title: 'Register',
+                messages: req.flash('registerMessage'),
+                displayName: req.user ? req.user.displayName : ''
+            });
+        }
+        else {
+            return passport.authenticate('local')(req, res, () => {
+                res.redirect('/contacts-list');
+            });
         }
     });
 }
 
-module.exports.logoutProcess = (req, res, next) => {
-    req.flash('success', 'Login Again Here');
-    req.session.destroy(function(error) {
-        res.redirect('/home');
-    });
+module.exports.performLogout = (req, res, next) => {
+    req.logout();
+    res.redirect('/');
 }

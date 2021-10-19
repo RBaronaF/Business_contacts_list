@@ -11,29 +11,28 @@ let router = express.Router();
 let contactsController = require('../controllers/contacts');
 
 /* GET Contacts View page. */
-router.get('/', requiredAuth, contactsController.displayContactsListPage);
+router.get('/', contactsController.displayContactsListPage);
 
 /* GET Contacts View page. */
-router.get('/view', requiredAuth, contactsController.displayContactsListPage);
+router.get('/view', requireAuth, contactsController.displayContactsListPage);
 
 /* GET Contact Edit page. */
-router.get('/edit/:id', requiredAuth, contactsController.displayContactEditPage);
+router.get('/edit/:id', requireAuth, contactsController.displayContactEditPage);
 
 /* Post Contact Edit page. */
-router.post('/edit/:id', requiredAuth, contactsController.processContactEdit);
+router.post('/edit/:id', requireAuth, contactsController.processContactEdit);
 
 /* Post Contact delete. */
-router.get('/delete/:id', requiredAuth, contactsController.performDelete);
+router.get('/delete/:id', requireAuth, contactsController.performDelete);
 
 
-/* Authentication */
-function requiredAuth(req, res, next) {
-    if(req.session.loggedin) {
-        next()
-    } else {
-        req.flash('success', 'Please login first!');
-        res.redirect('/login')
+// helper function for guard purposes
+function requireAuth(req, res, next) {
+    // check if the user is logged in
+    if(!req.isAuthenticated()) {
+        return res.redirect('/login');
     }
+    next();
 }
 
 module.exports = router;

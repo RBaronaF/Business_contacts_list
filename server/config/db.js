@@ -5,8 +5,7 @@ StudentID : 301165198
 Date : 2021-10-17
 */
 
-module.exports = 
-{
-    //"URI": "mongodb://localhost/business_contacts_list"
-    "URI": "mongodb+srv://hitman:star123@cluster0.9cdx3.mongodb.net"
+module.exports = {
+    "Secret": 'SomeSecret',
+    "URI": "mongodb+srv://rbarona:star123@mongodbserver.5f77m.mongodb.net/business_contacts_list?retryWrites=true&w=majority"
 }

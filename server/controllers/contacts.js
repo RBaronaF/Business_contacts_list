@@ -11,12 +11,13 @@ let router = express.Router();
 let Contacts = require('../models/contact');
 
 module.exports.displayContactsListPage = (req, res, next) => {
+    let mysort = { contact_name : 1 }
     Contacts.find((err, contactList) => {
         if(err) {
             return console.error(err);
         }
         else {
-            res.render('contacts/view', {title: 'Contacts List', ContactsList: contactList });      
+            res.render('contacts/view', {title: 'Contacts List', ContactsList: contactList, displayName: req.user ? req.user.displayName : '' });      
         }
     });
 }
