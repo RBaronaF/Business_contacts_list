@@ -19,7 +19,7 @@ module.exports.displayContactsListPage = (req, res, next) => {
         else {
             res.render('contacts/view', {title: 'Contacts List', ContactsList: contactList, displayName: req.user ? req.user.displayName : '' });      
         }
-    });
+    }).sort(mysort);
 }
 
 module.exports.displayContactEditPage = (req, res, next) => {
