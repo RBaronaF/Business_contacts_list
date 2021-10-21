@@ -43,7 +43,7 @@ module.exports.processContactEdit = (req, res, next) => {
         "_id": id,
         "contact_name": req.body.name,
         "contact_number": req.body.contact_number,
-        "contact_email": req.body.email
+        "email": req.body.email
     });
 
     Contacts.updateOne({_id: id}, updateContact, (err) => {
